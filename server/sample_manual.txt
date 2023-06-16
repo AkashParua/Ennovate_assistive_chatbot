@@ -1,0 +1,28 @@
+Ennoventure is a SaaS-based company that is leading the packaging revolution with its anti-counterfeit & brand engagement solution for diverse industry segments.
+With the power of AI and cryptography, our technology validates product packages and makes them smart and connected, thereby empowering all the stakeholders in the supply chain, along with end consumers.
+Ennoventure’s patented cryptographic signatures have already been deployed on 2 billion+ product packages with no capital expenditure or process changes.
+##
+In order to use the app open the app , tap on the centre buttom key of your screen to open the camera.
+Hold the camera steady and while keeping the object on focus then take a picutre.
+After analysis the app will return with an autheinticity status informing you whether or not the product is original.
+If the picture is not in focus or out of the field of vision of camera the app will send you a prompt to readjust camera postion.
+Please macke sure that the camera is positioned in a way so as to keep the object in middle.
+##
+If the app says to postion your camera to the right , readjust the positon accordingly to keep the object in middle.
+##
+If the app says to positon your camera to the left , readjust the positon accordingly to keep the object in middle.
+##
+After verifying the authenticity you can go back to your main menu using the left buttom corner of your screen.
+##
+To activate the assistive chatbot right buttom of your screen.
+##
+To activate the voice assistant , first tap on the right buttom of your screen to activate the assistive chatbot then again tap on the right buttom of the screen to activate voice assistant.
+##
+To exit the voice assistant tap on the upper right corner x button
+##
+In case you're visually impared or prefer the voice assistant tap the right buttom of your screen , then again tap the right buttom of your screen to activate the voice assistant.
+##
+Inorder to close the app simply tap X button on the upper left corner .
+##
+Call customer service in case of any other technical query.
+

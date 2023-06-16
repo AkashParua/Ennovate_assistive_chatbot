@@ -1,0 +1,6 @@
+chromadb
+fastapi
+uvicorn[standard]
+torch
+python-multipart
+ultralytics
