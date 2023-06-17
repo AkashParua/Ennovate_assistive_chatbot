@@ -4,3 +4,5 @@ uvicorn[standard]
 torch
 python-multipart
 ultralytics
+streamlit
+pyttsx3

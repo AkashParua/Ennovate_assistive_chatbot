@@ -12,17 +12,26 @@ If the app says to postion your camera to the right , readjust the positon accor
 ##
 If the app says to positon your camera to the left , readjust the positon accordingly to keep the object in middle.
 ##
-After verifying the authenticity you can go back to your main menu using the left buttom corner of your screen.
+After verifying the authenticity you can go back to your main menu using X on upper left corner of your screen.
 ##
-To activate the assistive chatbot right buttom of your screen.
+To activate the assistive chatbot just write on the chatbox at the buttom of the screen and press enter
 ##
-To activate the voice assistant , first tap on the right buttom of your screen to activate the assistive chatbot then again tap on the right buttom of the screen to activate voice assistant.
-##
-To exit the voice assistant tap on the upper right corner x button
-##
-In case you're visually impared or prefer the voice assistant tap the right buttom of your screen , then again tap the right buttom of your screen to activate the voice assistant.
+To activate the voice assistant , first on the right buttom of your screen 
 ##
 Inorder to close the app simply tap X button on the upper left corner .
 ##
 Call customer service in case of any other technical query.
+##
+In order to set up the project after cloning the repo , create a new virtual environment.
+Use the commands "virtualenv env" activate the virtual environment.
+Then install dependencies using "pip -r install requirements.txt".
+Go to server folder and run "uvicorn main:app --reload". This will start the server.
+Run initialize_vectorDB.py once if the vector DB is empty.
+##
+In order to try the chatbot on your own manual , edit the contents of sample_manual.txt.
+Then delete the previous embeddings using functions in initialize_vectorDB.py (see code) .
+Agian run initialize_vectorDB.py .
+
+
+
 

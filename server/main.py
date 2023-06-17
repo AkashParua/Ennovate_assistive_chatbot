@@ -1,17 +1,15 @@
-import base64
 from query import query
-from fastapi import FastAPI,File, UploadFile
+from fastapi import FastAPI, UploadFile
 from io import BytesIO
 from pydantic import BaseModel
 import json
 from PIL import Image ,ImageDraw
 from ultralytics import YOLO
 import http.client
-import torch
-import cv2
 model = YOLO("yolov8n.pt")
 conn = http.client.HTTPSConnection("chatgpt-gpt-3-5.p.rapidapi.com")
 app = FastAPI()
+
 headers = {
     'content-type': "application/json",
     'X-RapidAPI-Key': "2cc2e51559msh8bb526082cca664p1ff7cejsn0005b8d416ef",
@@ -26,23 +24,20 @@ class QueryResponse(BaseModel):
     bot_response: str
     manual_text: str
 
-
-@app.post("/query_request", response_model=QueryResponse)
+@app.post("/query-request", response_model=QueryResponse)
 def query_request(request: QueryRequest):
     
     docs = query(question=request.user_input , n=2)
     llm_query = f'given the following context : {" ".join(docs)} answer the question : {request.user_input}'
-    print(llm_query)
-    
+
     payload = json.dumps({"query" : llm_query})
     conn.request("POST", "/ask", payload, headers)
 
     res = conn.getresponse()
-    print(res)
     
     data = res.read().decode('utf-8')
     dic = json.loads(data)
-    print(dic)
+ 
     return QueryResponse(bot_response=dic['response'] ,  manual_text= " ".join(docs))
 
 
@@ -53,8 +48,7 @@ async def upload_image( target : str,image: UploadFile = UploadFile(...) ):
     # Load the image bytes into a PIL Image object
     pil_image = Image.open(BytesIO(image_bytes))
     results = model.predict(source=pil_image)
-    image_bytes = pil_image.tobytes()
-    encoded_image = base64.b64encode(image_bytes).decode('utf-8')
+   
     res = {}
     for result in results:
         bbox = result.boxes.xywh.tolist()
@@ -91,17 +85,15 @@ async def upload_image( target : str,image: UploadFile = UploadFile(...) ):
                 adjust = "the object is too high"
             if norm_ymid > 0.9 :
                 adjust = "the object is too low"   
-            draw.rectangle([(xmin, ymin), (xmax, ymax)], outline=(0, 255, 0), width=2)
-            
+            draw.rectangle([(xmin, ymin), (xmax, ymax)], outline=(0, 255, 0), width=5)
+    
     #pil_image.show()
     if count != 1:
         adjust = "Make sure only one object of interest is in frame"
     #print(count)
     res["adjust"] = adjust
-    res["image"]  = encoded_image
     #adding bounding box to the image   
-    json_response = json.dumps(res)
-    return json_response
+    return res
 
 
 
