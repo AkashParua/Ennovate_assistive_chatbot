@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 from pydantic import BaseModel
 from PIL import Image,ImageDraw
-import pyttsx3
-
-engine = pyttsx3.init()
+from gtts import gTTS
+import os
+import pygame
 # Define the data model for the request and response
 class QueryRequest(BaseModel):
     user_input: str
@@ -17,9 +17,18 @@ class QueryResponse(BaseModel):
 BASE_URL = "127.0.0.1:8000"
 
 # Function to convert text to speech
-def text_to_speech(text):
-    engine.say(text)
-    engine.runAndWait()
+def speech_to_text(text):
+    tts = gTTS(text)
+    # Save the speech as an in-memory audio file
+    audio_file = "output.mp3"
+    tts.save(audio_file)
+    pygame.mixer.init()
+    pygame.mixer.music.load(audio_file)
+    # Play the audio
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        continue
+            
    
     
 # Define a function to generate a response from the API
@@ -92,7 +101,7 @@ if speak_button:
     response = generate_response(user_input)
     st.text_area("AssistBot", value=response[0], height=100)
     st.text_area("Used Context: ", value= response[1] , height=200)
-    text_to_speech(response[0])
+    speech_to_text(response[0])
     
     
        

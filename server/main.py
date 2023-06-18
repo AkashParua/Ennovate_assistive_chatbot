@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import json
 from PIL import Image ,ImageDraw
 from ultralytics import YOLO
+
 import http.client
 model = YOLO("yolov8n.pt")
 conn = http.client.HTTPSConnection("chatgpt-gpt-3-5.p.rapidapi.com")
