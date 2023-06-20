@@ -75,7 +75,8 @@ if uploaded_file is not None and send_image:
                 ymax = ymid + h/2
                 draw.rectangle([(xmin, ymin), (xmax, ymax)], outline=(0, 255, 0), width=5)
         st.image(pil_image)
-        st.text(message)   
+        st.text(message)
+        speech_to_text(message)   
     else :
         st.text("Failed to get response")
 #---------------------------------------------------ChatBot-----------------------------------------------
